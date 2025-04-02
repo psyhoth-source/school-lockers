@@ -1,0 +1,76 @@
+{
+    "hero": {
+        "title": "Welcome!",
+        "description": "QR Code Lockers – a modern solution for convenient and secure storage at school. Open and close your locker using a QR code without the need for keys or cards. Fast, easy, and reliable!",
+        "button": "Find out more"
+    },
+    "about": {
+        "title": "About us",
+        "cards": [
+            {
+                "id": 1,
+                "title": "About Lockers",
+                "description": "Lockers is a convenient and modern school locker rental service. Access is provided via QR code, eliminating the need for keys or cards. Safe, simple, and fast!"
+            },
+            {
+                "id": 2,
+                "title": "Rental Price",
+                "description": "Rental Price: The rental price for a school year is only €8 – a fixed rate with no hidden fees."
+            },
+            {
+                "id": 3,
+                "title": "Quality Guarantee",
+                "description": "МWe ensure the reliability of our lockers and the security of access. QR codes update for extra protection."
+            },
+            {
+                "id": 4,
+                "title": "About Lockers",
+                "description": "Modern and spacious lockers for storing personal items. Secure, convenient, and easily accessible via QR code."
+            }
+        ]
+    },
+    "features": {
+        "title": "Cards",
+        "cards": [
+            {
+                "id": 1,
+                "title": "Aesthetic Appeal",
+                "shortDescription": "Short Description: Stylish and modern lockers for schools.",
+                "fullDescription": "Full Description: Our lockers feature a contemporary design that blends perfectly into any school interior, creating a cozy and orderly atmosphere."
+            },
+            {
+                "id": 2,
+                "title": "Quality & Reliability",
+                "shortDescription": "Short Description: Durable lockers with secure QR codes.",
+                "fullDescription": "Full Description: We use high-quality materials and dynamic QR codes, ensuring long-lasting lockers and the security of your belongings."
+            },
+            {
+                "id": 3,
+                "title": "Price",
+                "shortDescription": "Short Description: Locker rental for €8 per year.",
+                "fullDescription": "Full Description: The rental price for a locker for the entire school year is only €8, making it an affordable and great deal."
+            }
+        ]
+    },
+    "footer": {
+        "copyright": "© 2025 Free Lockers. All rights reserved."
+    },
+    "navigation": {
+        "logo": "ЛОГО",
+        "logoSvg": "/images/logo.svg",
+        "links": [
+            {
+                "title": "Home",
+                "url": "../index.html"
+            },
+            {
+                "title": "Free lockers",
+                "url": "/pages/lockers.html"
+            },
+            {
+                "title": "Contacts",
+                "url": "/pages/contacts.html"
+            }
+        ]
+    }
+} 

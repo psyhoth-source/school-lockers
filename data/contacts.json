@@ -1,0 +1,49 @@
+{
+    "contacts": {
+        "title": "Contacts",
+        "phone": {
+            "title": "Phone numbers",
+            "numbers": [
+                {
+                    "number": "+371 67043419",
+                    "copyData": "+37167043419"
+                }
+            ]
+        },
+        "email": {
+            "title": "Email",
+            "address": "r22vs@riga.lv",
+            "copyData": "r22vs@riga.lv"
+        },
+        "address": {
+            "title": "Address",
+            "street": "Bruņinieku iela 10",
+            "city": "Rīga",
+            "copyData": "Bruņinieku iela 10, Rīga"
+        }
+    },
+    "footer": {
+        "copyright": "© 2025 Your Company. All rights reserved."
+    },
+    "navigation": {
+        "logo": "Your Logo",
+        "logoSvg": "/images/logo.svg",
+        "links": [
+            {
+                "title": "Home",
+                "url": "/",
+                "active": false
+            },
+            {
+                "title": "Free lockers",
+                "url": "/pages/lockers.html",
+                "active": false
+            },
+            {
+                "title": "Contacts",
+                "url": "/pages/contacts.html",
+                "active": true
+            }
+        ]
+    }
+}

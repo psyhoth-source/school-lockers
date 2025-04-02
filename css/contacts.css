@@ -1,0 +1,409 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.contacts-section {
+    margin-top: 5rem;
+    padding: 4rem 0;
+    background: var(--bg-primary);
+}
+
+.contacts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.contacts-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.contacts-description {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-block {
+    margin-bottom: 2rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-block:nth-child(1) { animation-delay: 0.1s; }
+.contact-block:nth-child(2) { animation-delay: 0.2s; }
+.contact-block:nth-child(3) { animation-delay: 0.3s; }
+.contact-block:nth-child(4) { animation-delay: 0.4s; }
+
+.contact-block:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.contact-block h2 {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-block h2 i {
+    color: var(--accent-color);
+}
+
+.phone-number, .email, .address {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.phone-number i, .email i, .address i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.contact-note {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    opacity: 0.1;
+}
+
+.copy-button:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.copy-button:hover i {
+    transform: scale(1.2);
+    color: var(--accent-color);
+}
+
+.copy-button i {
+    transition: transform 0.3s ease;
+}
+
+.map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: relative;
+    z-index: 1;
+}
+
+.map-error {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-secondary);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem;
+    z-index: 2;
+}
+
+.map-error i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.map-error p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hours-item:last-child {
+    border-bottom: none;
+}
+
+.hours-item .day {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.hours-item .time {
+    color: var(--text-secondary);
+}
+
+.copy-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.copy-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.copy-notification i {
+    font-size: 1.1rem;
+}
+
+/* Стили для темной темы карты */
+:root[data-theme="dark"] .leaflet-tile-pane {
+    filter: brightness(0.6) invert(0.8) contrast(3) hue-rotate(200deg) saturate(0.3);
+}
+
+:root[data-theme="dark"] .leaflet-popup-content-wrapper {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .leaflet-popup-tip {
+    background: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .contacts-section {
+        padding: 2rem 0;
+    }
+
+    .contacts-container {
+        padding: 0 1rem;
+    }
+
+    .contacts-info h1 {
+        font-size: 2rem;
+    }
+
+    .contact-block {
+        padding: 1.5rem;
+    }
+
+    .map-container {
+        height: 250px;
+    }
+}
+
+.feedback-section {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+}
+
+.feedback-section h2 {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feedback-description {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feedback-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+}
+
+.form-group label {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    background: var(--bg-primary);
+    padding: 0 0.4rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label {
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.form-group input:focus ~ .focus-border,
+.form-group textarea:focus ~ .focus-border {
+    width: 100%;
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+}
+
+.submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .feedback-section {
+        padding: 2rem 0;
+    }
+
+    .feedback-form {
+        padding: 1.5rem;
+    }
+}

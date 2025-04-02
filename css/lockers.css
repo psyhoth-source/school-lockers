@@ -1,0 +1,363 @@
+:root {
+    --primary-color: #1E88E5;
+    --accent-color: #64B5F6;
+    --success-color: #4CAF50;
+    --error-color: #f44336;
+    --accent-color-transparent: rgba(33, 150, 243, 0.2);
+    --primary-rgb: 30, 136, 229;
+    --accent-rgb: 100, 181, 246;
+}
+
+/* Light theme (default) */
+:root {
+    --bg-color: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #404040;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+main {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-color);
+}
+
+.lockers-section {
+    padding: 4rem 2rem;
+    flex: 1;
+    position: relative;
+    background: var(--bg-color);
+}
+
+.lockers-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--accent-rgb), 0.1) 100%);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.lockers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.lockers-container h1 {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--text-primary);
+    font-size: 3rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.lockers-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.lockers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.locker {
+    background: var(--card-bg);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 320px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.locker:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.locker-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.locker-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.locker-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.locker-name {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.locker-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.locker-features {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.feature-icon:hover {
+    background: var(--primary-color);
+    color: var(--card-bg);
+    transform: scale(1.1);
+}
+
+.locker-price {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.locker-status {
+    margin-top: auto;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.locker.occupied .locker-status {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+}
+
+.locker.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+}
+
+/* Обновляем стили для контейнера уведомлений */
+.notification-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem; /* Изменили с left: 50% на right: 2rem */
+    transform: none; /* Убрали translateX(-50%) */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column-reverse; /* Чтобы новые уведомления появлялись снизу */
+    gap: 0.75rem;
+    pointer-events: none; /* Чтобы можно было кликать через контейнер */
+}
+
+/* Обновляем стили для уведомлений */
+.notification {
+    position: relative; /* Изменили с fixed на relative */
+    background: rgba(28, 28, 28, 0.85);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    width: 280px; /* Фиксированная ширина */
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(100%); /* Начальная позиция за пределами экрана */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto; /* Возвращаем возможность взаимодействия */
+}
+
+.notification.success {
+    border-left: 3px solid #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.15),
+                0 0 3px rgba(76, 175, 80, 0.3),
+                inset 0 0 5px rgba(76, 175, 80, 0.1);
+}
+
+.notification.error {
+    border-left: 3px solid #f44336;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.15),
+                0 0 3px rgba(244, 67, 54, 0.3),
+                inset 0 0 5px rgba(244, 67, 54, 0.1);
+}
+
+/* Обновляем анимации */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.hide {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Остальные стили для иконок и текста остаются без изменений */
+.notification i {
+    font-size: 1.1rem;
+}
+
+.notification.success i {
+    color: #4CAF50;
+    filter: drop-shadow(0 0 3px rgba(76, 175, 80, 0.5));
+}
+
+.notification.error i {
+    color: #f44336;
+    filter: drop-shadow(0 0 3px rgba(244, 67, 54, 0.5));
+}
+
+@media (max-width: 768px) {
+    .lockers-section {
+        padding: 3rem 1rem;
+    }
+
+    .lockers-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .lockers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .locker {
+        padding: 1.5rem;
+        min-height: 300px;
+    }
+
+    .locker-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* Стили для кнопок в разделе Pricing Plans */
+.pricing-section .cta-button {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.pricing-section .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+}
+
+.pricing-section .cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+/* Удаляем переопределение стилей для кнопок в темной теме */
+[data-theme="dark"] .pricing-section .cta-button {
+    background: var(--success-color);
+    color: white;
+} 
